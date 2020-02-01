@@ -14,4 +14,4 @@ typedef struct tnode {
   struct tnode* parent;
 }tnode;
 
-tnode createFreqTable(FILE* fp);
+tnode createFreqTable(char[]);

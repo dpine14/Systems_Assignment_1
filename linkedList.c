@@ -62,6 +62,30 @@ void llFree(LinkedList* ll) {
   
 }
 
+void addInOrder(LinkedList** ll, tnode newValue){
+
+   // Create the new node
+  LinkedList* newNode = (LinkedList*)malloc(1 * sizeof(LinkedList));
+  newNode->value = newValue;
+  newNode->next = NULL;
+  
+  // Find the end of the list
+  LinkedList* p = *ll;
+
+  if (p == NULL) {  // Add first element
+    *ll = newNode;  // This is why we need ll to be a **
+
+  } else {
+
+    while (p->next != NULL) {
+      p = p->next;
+    }
+    
+    // Attach it to the end
+    p->next = newNode;
+  }
+}
+
 int main() {
 
   tnode *n = (tnode*) malloc(1 * sizeof(tnode));
