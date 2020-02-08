@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 
   // Create the frequency table by reading the generic file
 
-  tnode leafNodes = createFreqTable("decind.txt");
+  tnode leafNodes = createFreqTable("test.txt");
   // Create the huffman tree from the frequency table
 
 
@@ -49,15 +49,16 @@ tnode createFreqTable(char* file){
 	FILE *fp = fopen(file, "r");
 
 	int count = 0;
-	tnode* freqList = (tnode*) malloc(127 * sizeof(tnode)); 
+	tnode* freqList = (tnode*) malloc(128 * sizeof(tnode)); 
+  int c;
 
-	while(fgetc(fp) != EOF){
-
-		if (fgetc(fp) >= 0 && fgetc(fp) <= 127)
+	while((c = fgetc(fp)) != EOF){
+    int ind = c;
+		if (c >= 0 && c <= 127)
 		{
-			freqList[fgetc(fp) - 0].weight++;
+			(*(freqList + c)).weight++;
 		}
-		printf("%c\n", freqList->c);
+		
 	}
 	return *freqList;
 }
